@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/rem.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script src="js/zepto.min.js"></script>
+		<script src="js/dropload.js">
+		</script>
+		<title></title>
+
+	</head>
+
+	<body>
+		<div class="main-box">
+			<div class='tab'>
+				<a href="" class="active">未解答</a>
+				<a href="">我的解答</a>
+			</div>
+			<div class='ask-content'>
+				<div class='lists'>
+					<a class='ask-card'>
+						<div class="ask-card-title">
+							<i><img src="http://usr.im/100x100?text=头像"/></i>
+							<div class="info">
+								<h4 class='pc-icon'>张小山</h4>
+								<!--小icon由class进行区分，图标小于1KB，均为base64图片-->
+								<p>13845412547</p>
+							</div>
+							<div class='time-box'>20分钟前<span>删除</span></div>
+						</div>
+
+						<div class="ask-card-info">
+							<p>我跟老公是二婚各有一个女儿他女儿被他前妻带走了，我前夫去世了孩子跟我现在我们又生了个女儿。不知道是不</p>
+						</div>
+					</a>
+
+					
+				</div>
+
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var dropload = $('.ask-content').dropload({
+				loadDownFn: function(me) {
+					$.ajax({
+						type: 'GET',
+						url: 'json/more.json',
+						dataType: 'json',
+						success: function(data) {
+							var result = '';
+							for (var i = 0; i < data.lists.length; i++) {
+								result += "<a href=" + data.lists[i].link + " class='ask-card'><div class='ask-card-title'><i><img src=" + data.lists[i].pic + " /></i><div class='info'><h4 class='weixin-icon'>" + data.lists[i].name + "</h4><p>13845412547</p></div><div class='time-box'>" + data.lists[i].time + "</div></div><div class='ask-card-info'><p>" + data.lists[i].data + "</p></div></a>";
+							}
+							// 为了测试，延迟1秒加载
+							setTimeout(function() {
+								$('.lists').append(result);
+								me.resetload();
+							}, 1000);
+						},
+						error: function(xhr, type) {
+							console.log(xhr, type);
+						}
+					});
+				}
+			});
+		</script>
+	</body>
+
+</html>
