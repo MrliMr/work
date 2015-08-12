@@ -1,0 +1,5 @@
+$(function() {
+  $(".swiper-container").swiper();
+});
+
+

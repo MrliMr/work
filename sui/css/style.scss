@@ -1,0 +1,72 @@
+@function Size($num){
+    @return ($num/20)/2+rem;
+}
+@import 'normalize';
+@import "compass/typography";
+//header;
+.bar.bar-nav{
+    background-color: #3d3d3d;
+}
+//swiper
+.swiper-slide img{
+    width: 100%;
+}
+.swiper-container{
+    height: Size(360);
+}
+//content
+.content{
+    background-color: #f3f3f3;
+}
+
+
+.icon-box a{
+    display: block;
+    overflow: hidden;
+    height: Size(110);
+    line-height: Size(110);
+    @include hover-link;
+    background: #a0d468;
+    color: #fff;
+    span{
+        float: left;
+        font-size: Size(55);
+        width: Size(110);
+        background: #99ce60;
+        text-align: center;
+    }
+    p{
+        text-indent: Size(20);
+        float: left;
+        margin: 0;
+    }
+}
+.info-box{
+    background: #fff;
+    overflow: hidden;
+  .content-padded{
+      margin: Size(30) Size(20);
+      overflow: hidden;
+  }
+    h4{
+        font-size: Size(32);
+        color: #333;
+        font-weight: normal;
+        border-bottom: 1px solid #e4e4e4;
+        line-height: Size(80);
+        text-indent: Size(20);
+        margin: 0;
+    }
+    .row{
+        margin-bottom: Size(20);
+        .col-33{
+            text-align: center;
+            border: 1px solid #e4e4e4;
+            a{
+                display: block;
+                color: #999;
+            }
+            
+        }
+    }
+}
