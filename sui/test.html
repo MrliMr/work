@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>网律</title>
+		<title>我的生活</title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		<link rel="shortcut icon" href="/favicon.ico">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,43 +12,94 @@
 
 		<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm.css">
 		<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm-extend.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
+
 		<!--<link rel="stylesheet" href="/your-css-file.css">-->
 	</head>
 
 	<body>
-
-		
+		<header class="bar bar-nav">
+			<h1 class="title">图片浏览器</h1>
+		</header>
+		<div class="content page">
+			<div class="content-block row">
+				<div class="col-50"><a href="#" class="button pb-standalone">Standalone</a></div>
+				<div class="col-50"><a href="#" class="button pb-popup">Popup</a></div>
+			</div>
+			<div class="content-block"><a href="#" class="button pb-standalone-captions">With Captions</a></div>
+			<div class="content-block"><a href="#" class="button pb-standalone-video">With Video</a></div>
+		</div>
 		<!-- 你的html代码 -->
-
-		<!-- page 容器 -->
-		<div class="page">
-			<!-- 标题栏 -->
-			<header class="bar bar-nav">
-				<a class="icon icon-me pull-left open-panel" data-panel='#panel-left-demo'>a</a>
-				<a class="icon pull-right"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAAHeTXxYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MEU2NzQzNDE0MThDMTFFNThCNjFCOTNBQjA5MjMzMkEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MEU2NzQzNDI0MThDMTFFNThCNjFCOTNBQjA5MjMzMkEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowRTY3NDMzRjQxOEMxMUU1OEI2MUI5M0FCMDkyMzMyQSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowRTY3NDM0MDQxOEMxMUU1OEI2MUI5M0FCMDkyMzMyQSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrudbaYAAAVPSURBVHjaYvj//z/DmTNnmIC4DcRm+fr1KzsDA8MPIGa8fv16C9O9e/fqgBwVIGbQ1NSsYdLV1a0GstuBWBkkCBBAjJ8+fWK4devWf15eXkYmoIAUELuAZFiA+BkQPwWq2MnCyMgIVs7FxWUEEECMILtOnDhxj5WV9RBQMAEkw83NzaChocHAdOrUqf/a2tpKQLF4BihgYmIC02CdX758Ybh58yYD1F23QWI8PDytAAEEljx79ixIYhYQJwMxs7GxMQPj379/Gc6fPw+S4APiTyDGnz9/7jC9e/fOFsj+D8SuMLvMzc1VmERERA4D2Y+BeCkDEmACGQUEckAMCqmTIM6dO3c6mYDEZKgikE/NQMYCPbuTSV1dPRfIyYOGDUjykJSU1D6AAAI7FwSAgc5w48aNU0AmKGh3M6CCNKDnbQwNDePA9oMIYAidYWZmBjEXAbE11AeGSJpmAYMzDmQBMKAmsADDeqmFhYXJ58+fhYGSMHeCgvA8mm0MoIiSk5MrAtrKFAEVewt1NwioA/E+dA0gwMnJ+Y/JyMiI+f79+znI8kBsCsSOUGeC8a9fv3xPnz79/8GDB+7wgAAmw4tA0/QZMMFLIBYDMdjY2HqAabAUIIDgmoCmwJKHPxD3QhPmaSDO//fv33FTU1NE7CGZaALE24B4CzQZwSLtJtCwCx8/fhRB0XT79u1ooMQfILMFiDPQnPcO6BqDN2/eBAM1qoM1/fjxgx0IgC74B8pNskDcCsSvkHWBvKCsrDwTGAgVQHUMTFevXt0BDPvlQLmDQLwCiK8D8U8sAcKgr6+feO3atYkswIx3Cir2HUpbQLMfVvD7929tJiEhoV1QvhmSnBUuTRwcHDdAAcEK5YP8sQDKPgTNVhgAWGDkML169SoWSSwRiO9B2R+BWBGavUVPnjz5CBgg4FTNBAoNNACK1KdQNsiAH0DFt4SFhRcBc8MfsCYtLa1oYC5cDEuQUCADxGehbHagnACw/DBHKliYGERFRUuBEr1oNppAcy0YABOsi56eHiM8RfDz878AOrMYmocCkDROAeIYoPN2ANMeIzBbgAUBAlRa7i6NhFEUD0FBFsU8YEWSNNGEWGyjhVooWIgiIoriA8FCC+ttbBSzKGyxFmKhEEFsRCwEsRRR/AeMJkG7FAoRBg1GiKn3d+XOEDPxkYFLMt88ztz7nXvOtQhrHjSjtL18QrVq3aS+PEHEtcqSW40qTqem8wTwlsvlugiFQraqvwOS/+l0eiaXyy2S4j+WdhyVHbWArfLbHw6HR8n61tZNEL8d3U1DEulfaYBj4r6o4aVErZ+hAJIno9+UrMUwjB52NU4P/bCAaJL5TCazhKA3cWOCB45YflSq/yEGRB90t5c/AzMrREabyHNfMpm8zGazkSoAJvCEcajUKzTiRlGjQX2uUYHkOFMyX323jpTuMRgMjrEd206ANnCHGCUzmZ5QWy09PKL40reVbBr+dUOV7qR0DX6/3yi5LuWZLlkT/7gmvBUSRJR/T1o2TlaRMtf3iTrNwpIv4Y3qnLecB4nR0iI/i9kcCAROnAwJc8jsDG3sKQOWFwtXtj0UrXcroLBylvhFrAA0WCgUtnFJQ+wI+Vgzteetj2BFG9q/B+s6EM4XFNoaRkoFmTg0Z6UPWFfA+LtQxL/ISR+EOIB9U1bDwveaVCp1jm+cAhb9ouxutfLpjyjOe+YB8uMx65Dh2SZBZOdlwtslo1pOF8SDvwBt0HltRMpMqV7dbnfU5/PFIEHevMnmPbi2zBBDeupVCx1W33XqUCZOWa+TlUP3LwrICV/vaG62V/Y/Knsf3AGS9/YAAAAASUVORK5CYII=" alt="" /></a>
-				<!--<h1 class="title">标题</h1>-->
-			</header>
-			<div class="content">
-				<div class="content-block">
-					<p><a href="#" class="button button-fill open-panel" data-panel='#panel-left-demo'>打开左侧栏</a></p>
-				</div>
-			</div>
-			<!-- 这里是页面内容区 -->
-
-		</div>
-<div class="panel-overlay"></div>
-		<div class="panel panel-left panel-reveal" id="panel-left-demo">
-			<div class="content-block">
-				<a href=""><span class="icon icon-browser"></span>律师介绍</a>
-			</div>
-		</div>
-
 		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
 		<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm.js' charset='utf-8'></script>
 		<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm-extend.js' charset='utf-8'></script>
-		<script src="js/javascript.js"></script>
 
+		<!--<script src="/your-js-file.js"></script>-->
+		<script type="text/javascript">
+			 /*=== 默认为 standalone ===*/
+			$(function() {
+				/*=== 默认为 standalone ===*/
+				$.photoBrowser.prototype.defaults.container = '#iwindow';
+				var myPhotoBrowserStandalone = $.photoBrowser({
+					photos: [
+						'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+						'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+						'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+					]
+				});
+				//点击时打开图片浏览器
+				$(document).on('click', '.pb-standalone', function() {
+					myPhotoBrowserStandalone.open();
+				});
+				/*=== Popup ===*/
+				var myPhotoBrowserPopup = $.photoBrowser({
+					photos: [
+						'//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+						'//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+						'//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+					],
+					type: 'popup'
+				});
+				$(document).on('click', '.pb-popup', function() {
+					myPhotoBrowserPopup.open();
+				});
+				/*=== 有标题 ===*/
+				var myPhotoBrowserCaptions = $.photoBrowser({
+					photos: [{
+							url: '//img.alicdn.com/tps/i3/TB1kt4wHVXXXXb_XVXX0HY8HXXX-1024-1024.jpeg',
+							caption: 'Caption 1 Text'
+						}, {
+							url: '//img.alicdn.com/tps/i1/TB1SKhUHVXXXXb7XXXX0HY8HXXX-1024-1024.jpeg',
+							caption: 'Second Caption Text'
+						},
+						// 这个没有标题
+						{
+							url: '//img.alicdn.com/tps/i4/TB1AdxNHVXXXXasXpXX0HY8HXXX-1024-1024.jpeg',
+						},
+					],
+					theme: 'dark',
+					type: 'standalone'
+				});
+				$(document).on('click', '.pb-standalone-captions', function() {
+					myPhotoBrowserCaptions.open();
+				});
+				/*=== 有视频 ===*/
+				var myPhotoBrowserVideo = $.photoBrowser({
+					photos: [{
+						html: '<iframe src="//www.youtube.com/embed/lmc21V-zBq0?list=PLpj0FBQgLGEr3mtZ5BTwtmSwF1dkPrPRM" frameborder="0" allowfullscreen></iframe>',
+						caption: 'Woodkid - Run Boy Run (Official HD Video)'
+					}, {
+						url: 'http://lorempixel.com/1024/1024/sports/2/',
+						caption: 'Second Caption Text'
+					}, {
+						url: 'http://lorempixel.com/1024/1024/sports/3/',
+					}, ],
+					theme: 'dark',
+					type: 'standalone'
+				});
+				$(document).on('click', '.pb-standalone-video', function() {
+					myPhotoBrowserVideo.open();
+				});
+			})
+		</script>
 	</body>
-
-</html>
+	</html

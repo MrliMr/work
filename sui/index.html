@@ -10,10 +10,9 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-		<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm.css">
-		<link rel="stylesheet" href="//g.alicdn.com/sui-mobile/sm/0.5.0/css/sm-extend.css">
+		<link rel="stylesheet" href="sui/css/sm.min.css">
+		<link rel="stylesheet" href="sui/css/sm-extend.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<!--<link rel="stylesheet" href="/your-css-file.css">-->
 	</head>
 
 	<body>
@@ -23,13 +22,17 @@
 		<div class="page">
 			<!-- 标题栏 -->
 			<header class="bar bar-nav">
-				<a class="icon pull-left open-panel hamburger-icon"><div></div></a>
-				<a class="icon pull-right external call" href="tel:888"><div></div></a>
+				<a class="icon pull-left open-panel hamburger-icon">
+					<div></div>
+				</a>
+				<a class="icon pull-right external call" href="tel:888">
+					<div></div>
+				</a>
 			</header>
 			<!-- 这里是页面内容区 -->
 			<div class="content">
 				<!-- Slider -->
-				<div class="swiper-container" data-space-between='10'>
+				<div class="swiper-container main-swiper" data-space-between='10'>
 					<div class="swiper-wrapper">
 						<div class="swiper-slide"><img src="http://demo.htmleaf.com/1508/201508121626/img/1.jpg" alt=""></div>
 						<div class="swiper-slide"><img src="http://demo.htmleaf.com/1508/201508121626/img/2.jpg" alt=""></div>
@@ -48,78 +51,27 @@
 							</a>
 						</div>
 						<div class="col-50">
-							<a>
-								<span class="icon icon-browser"></span>
-								<p>律師介紹</p>
-							</a>
-						</div>
-					</div><div class="row">
-						<div class="col-50">
-							<a href='http://www.baidu.com' class="external">
-								<span class="icon icon-browser"></span>
-								<p>律師介紹</p>
-							</a>
-						</div>
-						<div class="col-50">
-							<a>
-								<span class="icon icon-browser"></span>
-								<p>律師介紹</p>
-							</a>
-						</div>
-					</div><div class="row">
-						<div class="col-50">
-							<a href='http://www.baidu.com' class="external">
-								<span class="icon icon-browser"></span>
-								<p>律師介紹</p>
-							</a>
-						</div>
-						<div class="col-50">
-							<a>
-								<span class="icon icon-browser"></span>
-								<p>律師介紹</p>
-							</a>
-						</div>
-					</div><div class="row">
-						<div class="col-50">
-							<a href='http://www.baidu.com' class="external">
-								<span class="icon icon-browser"></span>
-								<p>律師介紹</p>
-							</a>
-						</div>
-						<div class="col-50">
-							<a>
-								<span class="icon icon-browser"></span>
-								<p>律師介紹</p>
-							</a>
-						</div>
-					</div><div class="row">
-						<div class="col-50">
-							<a href='http://www.baidu.com' class="external">
-								<span class="icon icon-browser"></span>
-								<p>律師介紹</p>
-							</a>
-						</div>
-						<div class="col-50">
-							<a>
+							<a class='photoend'>
+
 								<span class="icon icon-browser"></span>
 								<p>律師介紹</p>
 							</a>
 						</div>
 					</div>
+
 				</div>
 				<div class="info-box">
 					<h4>業務領域</h4>
 					<div class="content-padded">
-						<div class="row">
-							<div class="col-33"><a href="http://www.baidu.com" class="external">企業融資</a></div>
-							<div class="col-33"><a>企業融資</a></div>
-							<div class="col-33"><a>企業融資</a></div>
-						</div>
-						<div class="row">
-							<div class="col-33"><a href="http://www.baidu.com">企業融資</a></div>
-							<div class="col-33"><a>企業融資</a></div>
-							<div class="col-33"><a>企業融資</a></div>
-						</div>
+						
+							<div class="block-ele"><a href="http://www.baidu.com" class="external">企業融資</a></div>
+							<div class="block-ele"><a>企業融資</a></div>
+							<div class="block-ele"><a>企業融資</a></div>
+					
+							<div class="block-ele"><a href="http://www.baidu.com">企業融資</a></div>
+							<div class="block-ele"><a>企業融資</a></div>
+							<div class="block-ele"><a>企業融資</a></div>
+						
 					</div>
 
 				</div>
@@ -127,17 +79,17 @@
 					<h4>律师风采<a href="" class='external'>更多>></a></h4>
 					<div class="content-padded">
 						<div class="row">
-							<div class="col-25">
-								<a href="http://www.baidu.com" class="external"><img src="http://fakeimg.pl/350x200/" alt="" /></a>
+							<div class="col-25 pb-popup">
+								<a><img src="http://fakeimg.pl/350x200/" alt="" /></a>
 							</div>
-							<div class="col-25">
-								<a href="" class="external"><img src="http://fakeimg.pl/350x200/" alt="" /></a>
+							<div class="col-25 pb-popup">
+								<a><img src="http://fakeimg.pl/350x200/" alt="" /></a>
 							</div>
-							<div class="col-25">
-								<a href="" class="external"><img src="http://fakeimg.pl/350x200/" alt="" /></a>
+							<div class="col-25 pb-popup">
+								<a><img src="http://fakeimg.pl/350x200/" alt="" /></a>
 							</div>
-							<div class="col-25">
-								<a href="" class="external"><img src="http://fakeimg.pl/350x200/" alt="" /></a>
+							<div class="col-25 pb-popup pb-popup">
+								<a><img src="http://fakeimg.pl/350x200/" alt="" /></a>
 							</div>
 						</div>
 					</div>
@@ -218,9 +170,9 @@
 			</div>
 		</div>
 
-		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
-		<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm.js' charset='utf-8'></script>
-		<script type='text/javascript' src='//g.alicdn.com/sui-mobile/sm/0.5.0/js/sm-extend.js' charset='utf-8'></script>
+		<script type='text/javascript' src='http://static.lawyermarketing.cn/js/fl580//m/zepto.js' charset='utf-8'></script>
+		<script type='text/javascript' src='sui/js/sm.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='sui/js/sm-extend.min.js' charset='utf-8'></script>
 		<script src="js/javascript.js"></script>
 
 	</body>
