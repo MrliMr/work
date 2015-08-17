@@ -1,12 +1,14 @@
 var validate = {
 	empty: function(elem, errmsg) {
+		console.log(elem,errmsg);
 		elem = $(elem);
 		elem.on('blur', function() {
 			var value = $.trim(this.value);
-			if (value !== '') {
-				$.alert(errmsg);
+			if (value == '') {
+				
+				return false;
 			} else {
-
+				return true;
 			}
 		})
 	},
@@ -49,4 +51,3 @@ var validate = {
 		
 	}
 };
-validate.empty("#phone", "");

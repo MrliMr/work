@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Mrli's blog
+title: Mrli's log
 subtitle: 这是我用来学习、交流、分享经验的博客
-description: 这是我用来学习、分享的博客
-author: YanLi
-language: zh-CN
+description:
+author: liyan
+language:
 timezone:
 
 # URL
@@ -65,12 +65,9 @@ pagination_dir: page
 ## Themes: http://hexo.io/themes/
 theme: jacman
 stylus:
-    compress: true
+  compress: true
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/MrliMr/mrlimr.github.io.git
-  branch:
-  message:
+  type:
