@@ -19,7 +19,7 @@
 
 		<div class="page">
 			<nav class="bar bar-tab">
-				<a href="" class='external'>马上注册</a><span>|</span><a class='external' href="">忘记密码?</a>
+				<a href="reg.html" class='external'>马上注册</a><span>|</span><a class='external' href="">忘记密码?</a>
 			</nav>
 			<div class="content">
 
@@ -38,7 +38,7 @@
 								<div class="item-inner">
 									<div class="item-media"><i class="icon icon-form-name"></i></div>
 									<div class="item-input">
-										<input id = 'phone' type="text" placeholder="手机号/邮箱/账号">
+										<input id='AccountNumber' type="text" placeholder="手机号/邮箱/账号">
 									</div>
 								</div>
 
@@ -50,7 +50,7 @@
 									<div class="item-media"><i class="icon icon-form-password"></i></div>
 
 									<div class="item-input">
-										<input type="password" placeholder="输入6-20位密码" class="password">
+										<input type="password" placeholder="输入6-20位密码" id="password">
 									</div>
 									<div class="item-media"><i class="icon icon-form-password see"></i></div>
 								</div>
@@ -71,8 +71,47 @@
 		<script type='text/javascript' src='http://static.lawyermarketing.cn/js/fl580//m/zepto.js' charset='utf-8'></script>
 		<script type='text/javascript' src='sui/js/sm.min.js' charset='utf-8'></script>
 		<script type='text/javascript' src='sui/js/sm-extend.min.js' charset='utf-8'></script>
+		<script src="js/Verification.js"></script>
 		<script src="js/javascript.js"></script>
-
+		<script type="text/javascript">
+			 //调用表单验证
+			$('#AccountNumber').blur(function() {
+				validate.empty("#AccountNumber", "账号不能为空")
+			});
+			$('#password').blur(function() {
+				validate.digit("#password", 6, 20, '密码由6-20英文与数字组成');
+			});
+			 //登录请求
+			$('.loginBtn').tap(function() {
+				if ((validate.empty("#AccountNumber", "账号不能为空")) && (validate.digit("#password", 6, 20, '密码由6-20英文与数字组成'))) {
+					$.ajax({
+						type: "get",
+						url: "", //请求地址
+						beforeSend: function() {
+							$.showPreloader('登录中');
+							//请求超过15秒，中断操作，进行错误提示。
+							setTimeout(function() {
+								$.hidePreloader();
+								$.toast("登录失败");
+							}, 15000);
+						},
+						data: {
+							'id': $('#AccountNumber').val(),
+							'password': $('#password').val()
+						},
+						success: function(data) {
+							if (data.status == '1') {
+								$.hidePreloader();
+								//下面是验证成功进行登录跳转操作
+							}
+						},
+						error: function(data) {
+							$.alert('登录异常');
+						}
+					});
+				}
+			});
+		</script>
 	</body>
 
 </html>

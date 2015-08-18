@@ -32,7 +32,7 @@
 								<div class="item-inner">
 									<div class="item-media"><i class="icon icon-form-phone"></i></div>
 									<div class="item-input">
-										<input id='phone' type="text" placeholder="输入您的手机号码">
+										<input id='phone' type="tel" placeholder="输入您的手机号码">
 									</div>
 								</div>
 
@@ -44,9 +44,9 @@
 									<div class="item-media"><i class="icon icon-form-getcode"></i></div>
 
 									<div class="item-input">
-										<input type="password" placeholder="输入验证码" class="password">
+										<input type="tel" placeholder="输入验证码" id="phoneCode">
 									</div>
-									<div class="item-media getcode">获取验证码</div>
+									<div class="item-media getcode">免费获取验证码</div>
 								</div>
 
 							</li>
@@ -56,9 +56,29 @@
 									<div class="item-media"><i class="icon icon-form-password"></i></div>
 
 									<div class="item-input">
-										<input type="password" placeholder="输入6-20位密码" class="password">
+										<input type="password" placeholder="输入6-20位密码" id="password">
 									</div>
 									<div class="item-media"><i class="icon icon-form-password see"></i></div>
+								</div>
+
+							</li>
+							<li>
+
+								<div class="item-inner">
+									<div class="item-media"><i class="icon icon-form-name"></i></div>
+									<div class="item-input">
+										<input id='name' type="text" placeholder="姓名">
+									</div>
+								</div>
+
+							</li>
+							<li>
+
+								<div class="item-inner">
+									<div class="item-media"><i class="icon icon-form-firm"></i></div>
+									<div class="item-input">
+										<input id='lawyerId' type="text" placeholder="职业证">
+									</div>
 								</div>
 
 							</li>
@@ -66,7 +86,7 @@
 					</div>
 					<div>
 
-						<div class="col-100"><a class="button button-big button-fill external loginBtn">注册</a></div>
+						<div class="col-100"><a class="button button-big button-fill external regNext">注册</a></div>
 
 					</div>
 				</div>
@@ -77,8 +97,140 @@
 		<script type='text/javascript' src='http://static.lawyermarketing.cn/js/fl580//m/zepto.js' charset='utf-8'></script>
 		<script type='text/javascript' src='sui/js/sm.min.js' charset='utf-8'></script>
 		<script type='text/javascript' src='sui/js/sm-extend.min.js' charset='utf-8'></script>
+		<script src="js/Verification.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/javascript.js"></script>
+		<script type="text/javascript">
+			 //  ========== 
+			 //  = 表单验证 = 
+			 //  ==========
+			$('#phone').blur(function() {
+				validate.phone('#phone', '手机号码有误');
+			}).on('keyup', function() {
+				var phoneNum = $(this).val();
+				if (phoneNum.length == 3) {
+					$(this).val(phoneNum + ' ');
+				} else if (phoneNum.length == 8) {
+					$(this).val(phoneNum + ' ');
+				}
+			});
+			$('#password').blur(function() {
+				validate.digit("#password", 6, 20, '密码由6-20英文与数字组成');
+			});
+			$('#name').blur(function() {
+				validate.empty("#name", '名称不能为空');
+			});
+			$('#lawyerId').blur(function() {
+				validate.digit("#lawyerId", '5', '17', '密码由5-17英文与数字组成');
+			});
+			$('#phoneCode').blur(function() {
+				validate.digit("#phoneCode", '4', '6', '验证码位数不正确');
+			});
+			 //  ========== 
+			 //  = 验证码请求 = 
+			 //  ========== 
+			var wait = 60;
 
+			function time(o) {
+				if (wait == 0) {
+					o.removeClass('disabled');
+					o.html("免费获取验证码");
+					wait = 60;
+				} else {
+					o.addClass('disabled');
+					o.html("重新发送(" + wait + ")");
+					wait--;
+					setTimeout(function() {
+							time(o)
+						},
+						1000)
+				}
+			}
+			$('.getcode').tap(function() {
+				if (!$(this).hasClass('disabled') && validate.phone('#phone', '请填写手机号码')) {
+					time($(this));
+					$.ajax({
+						type: "get",
+						url: "", //请求地址
+						data: {
+							'phoneNum': $('#phone').val(),
+						},
+						success: function(data) {
+							if (data.status == '1') {
+								//下面是验证码请求成功后操作
+							}
+						},
+						error: function(data) {
+							$.alert('数据异常');
+						}
+					});
+				}
+			});
+//			注册步骤1
+			function Verification_1() {
+				if (validate.phone('#phone', '手机号码有误') && validate.digit("#password", 6, 20, '密码由6-20英文与数字组成')) {
+					return true;
+				}
+			}
+			$('.regNext').tap(function() {
+				if (Verification_1()) {
+					$.ajax({
+						type: "get",
+						url: "", //请求地址
+						data: {
+							'phoneNum': $('#phone').val(),
+							'phoneCode': $('#phoneCode').val(),
+							'password': $('#password').val()
+						},
+						success: function(data) {
+							if (true) {
+								//							if (data.status == '1') {
+								//下面是验证码请求成功后操作
+								$('.list-block.reg li').hide();
+								$('.list-block.reg li:last-child,.list-block.reg li:nth-last-child(2)').show();
+								$('.regNext').removeClass('regNext').tap(function() {
+									sendData()
+								}).html('完成');
+							} else {
+								$.alert('验证码错误');
+							}
+						},
+						error: function(data) {
+							$.alert('数据异常');
+						}
+					});
+				}
+			});
+//注册步骤2
+			function sendData() {
+				if (validate.empty("#name", '名称不能为空') && validate.digit("#lawyerId", '5', '17', '密码由5-17英文与数字组成')) {
+					$.ajax({
+						type: "get",
+						url: "", //请求地址
+						beforeSend: function() {
+							$.showPreloader('注册中');
+							//请求超过15秒，中断操作，进行错误提示。
+							setTimeout(function() {
+								$.hidePreloader();
+								$.toast("注册失败");
+							}, 15000);
+						},
+						data: {
+							'name': $('#name').val(),
+							'lawyerId': $('#lawyerId').val()
+						},
+						success: function(data) {
+							if (data.status == '1') {
+								$.hidePreloader();
+								//下面是验证成功进行登录跳转操作
+							}
+						},
+						error: function(data) {
+							$.alert('登录异常');
+						}
+					});
+				}
+			};
+		</script>
 	</body>
 
 </html>

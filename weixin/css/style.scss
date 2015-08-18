@@ -49,6 +49,9 @@
         .list-block {
             &.reg{
                 margin-top: Size(-24);
+                li:last-child,li:nth-last-child(2){
+                    display: none;
+                }
             }
             ul{
                 border-radius: 5px;
