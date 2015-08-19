@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>网律登录</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="/favicon.ico">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="sui/css/sm.min.css">
+		<link rel="stylesheet" href="sui/css/sm-extend.min.css">
+		<link rel="stylesheet" type="text/css" href="css/weixin_style.css" />
+	</head>
+
+	<body>
+
+		<div class="page">
+			<div class="content">
+				<div class="head-img-box">
+					<input  type="file" capture="camera" id='upImgBtn' />
+					<div></div>
+					<p>上传图片</p>
+					<img src="img/bg.jpg" />
+				</div>
+				<div class="list-block FillInfo">
+					<ul>
+						<!-- Text inputs -->
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">您的姓名</div>
+									<div class="item-input">
+										<input type="text">
+									</div>
+									<span class="icon icon-right"></span>
+								</div>
+
+							</div>
+
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">联系手机</div>
+									<div class="item-input">
+										<input type="tel">
+									</div>
+									<span class="icon icon-right"></span>
+								</div>
+
+							</div>
+
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">办公电话</div>
+									<div class="item-input">
+										<input type="text">
+									</div>
+									<span class="icon icon-right"></span>
+								</div>
+
+							</div>
+
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">职业律所</div>
+									<div class="item-input">
+										<input type="text">
+									</div>
+									<span class="icon icon-right"></span>
+								</div>
+
+							</div>
+
+						</li>
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">办公地址</div>
+									<div class="item-input">
+										<input type="text">
+									</div>
+									<span class="icon icon-right"></span>
+								</div>
+							</div>
+						</li>
+						<li class="open-layer">
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">个人简介</div>
+									<div class="item-input">
+										<input type="text">
+									</div>
+									<span class="icon icon-right"></span>
+								</div>
+
+							</div>
+
+						</li>
+						<li class="open-layer">
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">专长领域</div>
+									<div class="item-input">
+										<input type="text">
+									</div>
+									<span class="icon icon-right"></span>
+								</div>
+
+							</div>
+
+						</li>
+
+				</div>
+
+				<div class="col-100"><a class="button button-big button-fill external loginBtn">完成</a></div>
+			</div>
+
+		</div>
+
+		<!-- 这里是页面内容区 -->
+		</div>
+		</div>
+		<!-- About Popup -->
+		<div class="popup popup-about">
+			<nav class="bar bar-tab">
+				<button class="button button-link button-tab pull-left close-popup">
+					返回
+				</button>
+				<button class="button button-link button-tab pull-right close-popup">
+					完成
+				</button>
+			</nav>
+
+			<textarea></textarea>
+
+		</div>
+		<script type='text/javascript' src='http://static.lawyermarketing.cn/js/fl580//m/zepto.js' charset='utf-8'></script>
+		<script type='text/javascript' src='sui/js/sm.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='sui/js/sm-extend.min.js' charset='utf-8'></script>
+		<script src="js/ImageCompression/lrz.bundle.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/weixin_javascript.js"></script>
+		<script type="text/javascript">
+			var dom;
+			$('.open-layer').tap(function() {
+				$.popup('.popup-about');
+				$('textarea').focus();
+				dom = this;
+			});
+			$('.popup .pull-right').tap(function() {
+				$(dom).find('input').val($('.popup textarea').val());
+			});
+			$('.close-popup').tap(function() {
+				$('textarea').val('');
+			});
+			 //  ========== 
+			 //  = 图片压缩 = 
+			 //  ==========
+			$('#upImgBtn').change(function() {
+				
+				lrz($(this)[0].files[0], {
+						width: 1024,
+						quality: .4
+					})
+					.then(function(rst) {
+						console.log(rst.base64);
+//						var img = new Image(),
+//							div = document.createElement('div'),
+//							p = document.createElement('p'),
+//							sourceSize = toFixed2(that.files[0].size / 1024),
+//							resultSize = toFixed2(rst.base64Len * 0.8 / 1024),
+//							scale = parseInt(100 - (resultSize / sourceSize * 100));
+//						p.style.fontSize = 13 + 'px';
+//						p.innerHTML = '源文件：<span class="text-danger">' +
+//							sourceSize + 'KB' +
+//							'</span>，压缩后<span class="text-success">' +
+//							resultSize + 'KB (省' + scale + '%)' +
+//							'</span> ';
+//						div.className = 'col-sm-6';
+//						div.appendChild(img);
+//						div.appendChild(p);
+//						img.onload = function() {
+//							that.parentNode.appendChild(div);
+//						};
+//						img.src = rst.base64;
+//						return rst;
+
+					});
+			});
+			 //			$('textarea').blur(function(){
+			 //				$.closeModal('.popup-about');
+			 //				$('textarea').val('');
+			 //				$(dom).find('input').val($('.popup textarea').val());
+			 //			});
+			 
+			 
+			 
+//			 			document.getElementById('upImgBtn').addEventListener('change',
+//					function() {
+//						console.log($(this));
+//						lrz(this.files[0], {
+//								width: 1024,
+//								quality: .4
+//							})
+//							.then(function(rst) {
+//								console.log(rst.base64);
+//								//						var img = new Image(),
+//								//							div = document.createElement('div'),
+//								//							p = document.createElement('p'),
+//								//							sourceSize = toFixed2(that.files[0].size / 1024),
+//								//							resultSize = toFixed2(rst.base64Len * 0.8 / 1024),
+//								//							scale = parseInt(100 - (resultSize / sourceSize * 100));
+//								//						p.style.fontSize = 13 + 'px';
+//								//						p.innerHTML = '源文件：<span class="text-danger">' +
+//								//							sourceSize + 'KB' +
+//								//							'</span>，压缩后<span class="text-success">' +
+//								//							resultSize + 'KB (省' + scale + '%)' +
+//								//							'</span> ';
+//								//						div.className = 'col-sm-6';
+//								//						div.appendChild(img);
+//								//						div.appendChild(p);
+//								//						img.onload = function() {
+//								//							that.parentNode.appendChild(div);
+//								//						};
+//								//						img.src = rst.base64;
+//								//						return rst;
+//							});
+//					})
+		</script>
+
+	</body>
+
+</html>
