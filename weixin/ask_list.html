@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>网律登录</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="/favicon.ico">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="sui/css/sm.min.css">
+		<link rel="stylesheet" href="sui/css/sm-extend.min.css">
+		<link rel="stylesheet" type="text/css" href="css/weixin_ask_list.css" />
+	</head>
+
+	<body>
+
+		<div class="page">
+			<header class="bar bar-nav">
+				<a class="icon icon-left pull-left"></a>
+
+				<label class="label-switch pull-right">
+					<input type="checkbox">
+					<div class="checkbox"></div>
+				</label>
+
+				<h1 class="title"><img src="img/defaultImg.jpg"/></h1>
+			</header>
+			<div class="row u-type-choose">
+				<div class="col-50">
+					<a id="choose_1">
+							加急一对一<span class="icon icon-down"></span> 
+						</a>
+				</div>
+
+				<div class="col-50">
+					<a id="choose_2" data-type = 'no-reply'>
+							未解答<span class="icon icon-down"></span> 
+						</a>
+				</div>
+			</div>
+			<div class="content pull-to-refresh-content native-scroll infinite-scroll" data-ptr-distance="55">
+
+				<div class="pull-to-refresh-layer">
+					<div class="preloader"></div>
+					<div class="pull-to-refresh-arrow"></div>
+				</div>
+				<!-- 下面是正文 -->
+
+				<div class="card-container">
+					<div class="card">
+
+						<div class="card-content-inner">
+							<p>例子例子例子例子例子例子例子例子例子例子例子例子</p>
+							<span>3分钟前</span>
+						</div>
+
+					</div>
+					<div class="card">
+
+						<div class="card-content-inner">
+							<p>例子例子例子例子例子例子例子例子例子例子例子例子</p>
+							<span>3分钟前</span>
+						</div>
+
+					</div>
+					<div class="card">
+
+						<div class="card-content-inner">
+							<p>例子例子例子例子例子例子例子例子例子例子例子例子</p>
+							<span>3分钟前</span>
+						</div>
+
+					</div>
+					<div class="card">
+
+						<div class="card-content-inner">
+							<p>例子例子例子例子例子例子例子例子例子例子例子例子</p>
+							<span>3分钟前</span>
+						</div>
+
+					</div>
+				</div>
+				<div class="infinite-scroll-preloader">
+					加载中
+					<div class="preloader"></div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- About Popup -->
+		<div class="popup popup-about">
+
+			<div class="list-block">
+				<ul>
+					<li class="item-content">
+						<div class="item-inner">
+							<div class="item-title">已回复</div>
+							<div class="item-after"> <span class="icon"></span></div>
+						</div>
+					</li>
+					<li class="item-content">
+						<div class="item-inner">
+							<div class="item-title">未回复</div>
+							<div class="item-after"><span class="icon"></span></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		<script type='text/javascript' src='http://static.lawyermarketing.cn/js/fl580//m/zepto.js' charset='utf-8'></script>
+		<script type='text/javascript' src='sui/js/sm.min.js' charset='utf-8'></script>
+		<script type='text/javascript' src='sui/js/sm-extend.min.js' charset='utf-8'></script>
+		<script type="text/javascript">
+		
+		//  ========== 
+		//  = 上拉刷新 = 
+		//  ========== 
+			 // 添加'refresh'监听器
+			$(document).on('refresh', '.pull-to-refresh-content', function(e) {
+				// 模拟2s的加载过程
+				setTimeout(function() {
+					var cardNumber = $(e.target).find('.card').length + 1;
+					var cardHTML = '<div class="card">' +
+						'<div class="card-header">card' + cardNumber + '</div>' +
+						'<div class="card-content">' +
+						'<div class="card-content-inner">' +
+						'这里是第' + cardNumber + '个card，下拉刷新会出现第' + (cardNumber + 1) + '个card。' +
+						'</div>' +
+						'</div>' +
+						'</div>';
+					$(e.target).find('.card-container').prepend(cardHTML);
+					// 加载完毕需要重置
+					$.pullToRefreshDone('.pull-to-refresh-content');
+				}, 100);
+			});
+			 //  ========== 
+			 //  = 加載更多 = 
+			 //  ========== 
+			  // 加载flag
+			var loading = false;
+			 // 最多可加载的条目
+			var maxItems = 100;
+			 // 每次加载添加多少条目
+			var itemsPerLoad = 10;
+
+			function addItems(number, lastIndex) {
+					// 生成新条目的HTML
+					var html = '';
+					for (var i = lastIndex + 1; i <= lastIndex + number; i++) {
+						html += '<div class="card">' +
+						'<div class="card-header">card</div>' +
+						'<div class="card-content">' +
+						'<div class="card-content-inner">' +
+						'这里是第' +
+						'</div>' +
+						'</div>' +
+						'</div>';
+					}
+					// 添加新条目
+					$('.card-container').append(html);
+					console.log($('.card-container .card').length);
+				}
+				//预先加载20条
+			addItems(itemsPerLoad, 0);
+			 // 上次加载的序号
+			var lastIndex = 20;
+			 // 注册'infinite'事件处理函数
+			$(document).on('infinite', '.infinite-scroll', function() {
+				// 如果正在加载，则退出
+				if (loading) return;
+				// 设置flag
+				loading = true;
+				// 模拟1s的加载过程
+				console.log('开始加载');
+				setTimeout(function() {
+					// 重置加载flag
+					loading = false;
+					if (lastIndex >= maxItems) {
+						// 加载完毕，则注销无限加载事件，以防不必要的加载
+						$.detachInfiniteScroll($('.infinite-scroll'));
+						// 删除加载提示符
+						$('.infinite-scroll-preloader').remove();
+						return;
+					}
+					// 添加新条目
+					addItems(itemsPerLoad, lastIndex);
+					// 更新最后加载的序号
+					lastIndex = $('.card-container .card').length;
+					//容器发生改变,如果是js滚动，需要刷新滚动
+					$.refreshScroller();
+				}, 800);
+			});
+			$.init();
+		//  ========== 
+		//  = 彈出選擇層 = 
+		//  ========== 
+	
+		$('#choose_1,#choose_2').tap(function(e){
+			if(e.target.getAttribute('data-type')=='no-reply'){
+				$('.popup-about ul li:last-child .icon').addClass('icon-check');
+			}
+			$.popup('.popup-about');
+		});
+		</script>
+	</body>
+
+</html>

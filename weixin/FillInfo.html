@@ -16,13 +16,14 @@
 	</head>
 
 	<body>
-
 		<div class="page">
 			<div class="content">
 				<div class="head-img-box">
-					<input  type="file" capture="camera" id='upImgBtn' />
-					<div></div>
-					<p>上传图片</p>
+					<input type="file" capture="camera" id='upImgBtn' />
+					<div>
+
+					</div>
+					<p>上传头像</p>
 					<img src="img/bg.jpg" />
 				</div>
 				<div class="list-block FillInfo">
@@ -33,9 +34,9 @@
 								<div class="item-inner">
 									<div class="item-title label">您的姓名</div>
 									<div class="item-input">
-										<input type="text">
+										<input id='lawyername' type="text">
 									</div>
-									<span class="icon icon-right"></span>
+									<span id='layername' class="icon icon-right"></span>
 								</div>
 
 							</div>
@@ -46,7 +47,7 @@
 								<div class="item-inner">
 									<div class="item-title label">联系手机</div>
 									<div class="item-input">
-										<input type="tel">
+										<input id='phoneNum' type="tel">
 									</div>
 									<span class="icon icon-right"></span>
 								</div>
@@ -59,7 +60,7 @@
 								<div class="item-inner">
 									<div class="item-title label">办公电话</div>
 									<div class="item-input">
-										<input type="text">
+										<input id='telNum' type="tel">
 									</div>
 									<span class="icon icon-right"></span>
 								</div>
@@ -72,7 +73,7 @@
 								<div class="item-inner">
 									<div class="item-title label">职业律所</div>
 									<div class="item-input">
-										<input type="text">
+										<input id='companyName' type="text">
 									</div>
 									<span class="icon icon-right"></span>
 								</div>
@@ -85,7 +86,7 @@
 								<div class="item-inner">
 									<div class="item-title label">办公地址</div>
 									<div class="item-input">
-										<input type="text">
+										<input id='companyAdd' type="text">
 									</div>
 									<span class="icon icon-right"></span>
 								</div>
@@ -96,7 +97,7 @@
 								<div class="item-inner">
 									<div class="item-title label">个人简介</div>
 									<div class="item-input">
-										<input type="text">
+										<input id='lawyerInfo' type="text">
 									</div>
 									<span class="icon icon-right"></span>
 								</div>
@@ -109,7 +110,7 @@
 								<div class="item-inner">
 									<div class="item-title label">专长领域</div>
 									<div class="item-input">
-										<input type="text">
+										<input id='exp' type="text">
 									</div>
 									<span class="icon icon-right"></span>
 								</div>
@@ -128,7 +129,20 @@
 		<!-- 这里是页面内容区 -->
 		</div>
 		</div>
-		<!-- About Popup -->
+
+		<!-- About img -->
+		<div class="popup popup-headimg">
+			<div id="mycanvasc" style="width: 300px; height: 300px;margin: 0 auto;margin-top: 20%;border: 2px solid #0894ec; overflow: hidden;">
+				<!-- set desired position and size to that div -->
+				<canvas id="mycanvas" style="width: 100%; height: 100%;"></canvas>
+			</div>
+			<div class="col-100">
+				<a class="button button-big button-fill external tobase64">完成</a>
+				<a class="button button-big button-fill external close-popup">取消</a>
+			</div>
+		</div>
+
+		<!-- About textarea -->
 		<div class="popup popup-about">
 			<nav class="bar bar-tab">
 				<button class="button button-link button-tab pull-left close-popup">
@@ -140,14 +154,19 @@
 			</nav>
 
 			<textarea></textarea>
-
 		</div>
 		<script type='text/javascript' src='http://static.lawyermarketing.cn/js/fl580//m/zepto.js' charset='utf-8'></script>
 		<script type='text/javascript' src='sui/js/sm.min.js' charset='utf-8'></script>
 		<script type='text/javascript' src='sui/js/sm-extend.min.js' charset='utf-8'></script>
 		<script src="js/ImageCompression/lrz.bundle.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/img-touch-canvas.js"></script>
+		<script src="js/Verification.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/touchImage.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/weixin_javascript.js"></script>
 		<script type="text/javascript">
+			 //  =========================== 
+			 //  = 弹出popup进行输入 = 
+			 //  =========================== 
 			var dom;
 			$('.open-layer').tap(function() {
 				$.popup('.popup-about');
@@ -164,75 +183,70 @@
 			 //  = 图片压缩 = 
 			 //  ==========
 			$('#upImgBtn').change(function() {
-				
 				lrz($(this)[0].files[0], {
-						width: 1024,
-						quality: .4
+						width: 350,
+						quality: .3
 					})
 					.then(function(rst) {
 						console.log(rst.base64);
-//						var img = new Image(),
-//							div = document.createElement('div'),
-//							p = document.createElement('p'),
-//							sourceSize = toFixed2(that.files[0].size / 1024),
-//							resultSize = toFixed2(rst.base64Len * 0.8 / 1024),
-//							scale = parseInt(100 - (resultSize / sourceSize * 100));
-//						p.style.fontSize = 13 + 'px';
-//						p.innerHTML = '源文件：<span class="text-danger">' +
-//							sourceSize + 'KB' +
-//							'</span>，压缩后<span class="text-success">' +
-//							resultSize + 'KB (省' + scale + '%)' +
-//							'</span> ';
-//						div.className = 'col-sm-6';
-//						div.appendChild(img);
-//						div.appendChild(p);
-//						img.onload = function() {
-//							that.parentNode.appendChild(div);
-//						};
-//						img.src = rst.base64;
-//						return rst;
-
+						$.popup('.popup-headimg');
+						var gesturableImg = new ImgTouchCanvas({
+							canvas: document.getElementById('mycanvas'),
+							path: rst.base64,
+							desktop: false
+						});
 					});
 			});
-			 //			$('textarea').blur(function(){
-			 //				$.closeModal('.popup-about');
-			 //				$('textarea').val('');
-			 //				$(dom).find('input').val($('.popup textarea').val());
-			 //			});
-			 
-			 
-			 
-//			 			document.getElementById('upImgBtn').addEventListener('change',
-//					function() {
-//						console.log($(this));
-//						lrz(this.files[0], {
-//								width: 1024,
-//								quality: .4
-//							})
-//							.then(function(rst) {
-//								console.log(rst.base64);
-//								//						var img = new Image(),
-//								//							div = document.createElement('div'),
-//								//							p = document.createElement('p'),
-//								//							sourceSize = toFixed2(that.files[0].size / 1024),
-//								//							resultSize = toFixed2(rst.base64Len * 0.8 / 1024),
-//								//							scale = parseInt(100 - (resultSize / sourceSize * 100));
-//								//						p.style.fontSize = 13 + 'px';
-//								//						p.innerHTML = '源文件：<span class="text-danger">' +
-//								//							sourceSize + 'KB' +
-//								//							'</span>，压缩后<span class="text-success">' +
-//								//							resultSize + 'KB (省' + scale + '%)' +
-//								//							'</span> ';
-//								//						div.className = 'col-sm-6';
-//								//						div.appendChild(img);
-//								//						div.appendChild(p);
-//								//						img.onload = function() {
-//								//							that.parentNode.appendChild(div);
-//								//						};
-//								//						img.src = rst.base64;
-//								//						return rst;
-//							});
-//					})
+			$('.tobase64').tap(function() {
+				var canvas = $('#mycanvas');
+				console.log(canvas[0].toDataURL());
+				$('.head-img-box div').html('<img src=' + canvas[0].toDataURL() + ' />');
+				$.closeModal('.popup-headimg');
+			});
+			 //  ========== 
+			 //  = 表单验证 = 
+			 //  ==========
+			$('#lawyername').blur(function() {
+				validate.empty('#lawyername', '姓名不能为空');
+			})
+			 $('#phoneNum').blur(function() {
+				validate.phone('#phoneNum', '手机号码有误');
+			}).on('keyup', function() {
+				var phoneNum = $(this).val();
+				if (phoneNum.length == 3) {
+					$(this).val(phoneNum + ' ');
+				} else if (phoneNum.length == 8) {
+					$(this).val(phoneNum + ' ');
+				}
+			});
+			$('#telNum').blur(function() {
+				validate.empty('#telNum', '电话不能为空');
+			});
+			$('#companyName').blur(function() {
+				validate.empty('#companyName', '律所名不能为空');
+			});
+			$('#companyAdd').blur(function() {
+				validate.empty('#companyAdd', '办公地址不能为空');
+			});
+			$('.loginBtn').tap(function() {
+				if (validate.empty('#lawyername', '姓名不能为空') && validate.phone('#phoneNum', '手机号码有误') && validate.empty('#telNum', '电话不能为空') && validate.empty('#companyName', '律所名不能为空') && validate.empty('#companyAdd', '办公地址不能为空') && validate.empty('#lawyerInfo', '律师简介不能为空') && validate.empty('#exp', '专长领域不能为空')) {
+					if ($('.head-img-box div').find('img').length != 0) {
+//						var LAWYERINFO={
+//							headImg：$('.head-img-box div img').attr('src'),
+//							
+//						};
+//						alert(LAWYE.headImg);
+//						$.ajax({
+//							type: "get",
+//							url: "",
+//							
+//						});
+					} else {
+						alert('ss');
+						$.alert('请上传头像');
+					}
+				}
+			});
 		</script>
 
 	</body>

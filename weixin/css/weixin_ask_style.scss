@@ -1,0 +1,180 @@
+@function Size($num) {
+    @return ($num/20)/2+rem;
+}
+
+.page.page-current{
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-orient:vertical;
+	-webkit-box-direction:normal;
+	-webkit-flex-direction:column;
+	-ms-flex-direction:column;
+	        flex-direction:column;
+}
+
+header {
+    .title {
+        background: #0097e0;
+        color: #fff;
+    }
+    a.button.button-link {
+        color: #fff;
+    }
+}
+.u-tips{
+        text-align: center;
+        font-size: Size(28);
+        color: #ff8800;
+        border-bottom: 1px solid #ccc;
+        margin: 0;
+        line-height: Size(68);
+    }
+.content {
+	-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;
+	position:static;
+    
+    .m-sms-box {}
+}
+.bar{
+	position:static;
+}
+#m-ask-box {
+    height: auto;
+}
+
+.news-box {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 Size(20);
+    background: #f8f8f8;
+    min-height: Size(88);
+    border-top: 1px solid #c8c8cd;
+    textarea {
+        font-family: arial, "simhei", sans-serif;
+        display: block;
+        width: 100%;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        font-size: Size(26);
+        height: Size(55);
+        border: 1px solid #c8c8cd;
+        margin: Size(16) 0;
+        border-radius: 5px;
+        -webkit-appearance: none;
+        padding: Size(10);
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    button {
+        padding: Size(15) 0;
+        margin-left: Size(24);
+        border: none;
+        background: none;
+        font-size: Size(34);
+        color: #c7c7cc;
+        font-family: arial, "simhei", sans-serif;
+    }
+    button.allow {
+        color: #007aff;
+    }
+}
+
+.chat-box {
+    padding: Size(20);
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    >div {
+        margin-bottom: Size(55);
+    }
+    >div:last-child {
+        margin-bottom: 0;
+    }
+    .head-img {
+        width: Size(38);
+        height: Size(38);
+        background: #999;
+        color: #fff;
+        border-radius: 100%;
+        text-align: center;
+        line-height: Size(38);
+        font-size: Size(26);
+    }
+    .chat-info-box {
+        .time {
+            text-align: center;
+            font-size: Size(24);
+            color: #8e8e8e;
+            margin-bottom: Size(30);
+            span {
+                margin-left: Size(10);
+            }
+        }
+        .sms-box {
+            overflow: hidden;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            .info {
+                p {
+                    word-wrap: break-word;
+                    word-break: normal;
+                    padding: 0 Size(10);
+                    color: #333;
+                    font-size: Size(27);
+                    line-height: Size(45);
+                    margin: 0;
+                }
+                float: left;
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+                font-size: Size(26);
+                color: #fff;
+                line-height: Size(36);
+                background: #fff;
+                padding: Size(30) Size(30) Size(30) Size(70);
+                border-radius: 5px;
+                position: relative;
+            }
+            .info.guest:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                height: 100%;
+                border-radius: 0 90px 0 0;
+                width: Size(40);
+                background-color: #eee;
+            }
+        }
+    }
+    .chat-info-box.lawyer {
+        .info.lawyer {
+            background: #0097e0;
+            padding: Size(30) Size(70) Size(30) Size(30);
+        }
+        .info.lawyer:before {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            height: 100%;
+            border-radius: 90px 0 0 0;
+            width: Size(40);
+            background-color: #eee;
+        }
+    }
+}

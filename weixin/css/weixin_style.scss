@@ -15,6 +15,7 @@
 
 .list-block {
     margin-bottom: Size(21);
+    margin-top: Size(30);
 }
 .popup-about {
     
@@ -26,13 +27,22 @@
     textarea{
         display: block;
         width: 100%;
-        height: 100%;
+        height: 90%;
+        margin-top: 10%;
         resize: vertical;
         border: none;
         color: #333;
         font-size: Size(30);
         line-height: Size(40);
         padding: Size(25);
+    }
+}
+
+.popup-headimg{
+    a.button{
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 10px;
     }
 }
 .page {
@@ -61,13 +71,14 @@
                 height: 100%;
                 width: 100%;
                 opacity: 0; 
+                z-index: 1000;
             }
             img {
                 width: 100%;
             }
             div {
-                height: Size(140);
-                width: Size(140);
+                height: Size(180);
+                width: Size(180);
                 border: Size(5) solid #729be1;
                 //              background: black;
                 position: absolute;
@@ -77,11 +88,14 @@
                 -webkit-transform: translateX(-50%);
                 -ms-transform: translateX(-50%);
                 transform: translateX(-50%);
+                img{
+                    border-radius: 100%;
+                }
             }
             p {
                 position: absolute;
                 left: 50%;
-                bottom: Size(46);
+                bottom: Size(20);
                 -webkit-transform: translateX(-50%);
                 -ms-transform: translateX(-50%);
                 transform: translateX(-50%);
@@ -132,6 +146,34 @@
                 li:nth-last-child(2) {
                     display: none;
                 }
+            }
+            &.card-success{
+                .head-img-box{
+                     width: Size(200);
+                    height: Size(200);
+                    margin: 0 auto;
+                    margin-top: Size(80);
+                    border-radius: 100%;
+                    img{
+                        border-radius: 100%;
+                    }
+                }
+               h4{
+                   text-align: center;
+                   font-size: Size(44);
+                   color: #333;
+                   margin: Size(34) 0 Size(51) 0;
+               }
+               a{
+                   width: 97%;
+                   margin: 0 auto;
+               }
+               p{
+                   font-size: Size(24);
+                   color: #999;
+                   text-align: center;
+                   margin-top: Size(38);
+               }
             }
             &.start-use {
                 margin-top: Size(40);
