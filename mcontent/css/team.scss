@@ -1,0 +1,122 @@
+@import "_baseFuc.scss";
+body {
+    background: #f3f3f3;
+}
+
+.title {
+    padding: Size(33) 0 Size(33) Size(60);
+    font-size: FSize(54);
+    color: #262626;
+    background: #fff;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.teamCard {
+    background: #fff;
+    margin-bottom: Size(24);
+    .infoA {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        position: relative;
+        padding: Size(45) Size(42) Size(25);
+        border-bottom: 1PX solid rgba(233,233,233,.5);
+        text-decoration: none;
+        .picBox {
+            height: FSize(156);
+            width: FSize(156);
+            border-radius: 100%;
+            overflow: hidden;
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .infoContent {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            margin-left: Size(24);
+            margin-right: Size(95);
+            p {
+                margin: 0;
+                &:first-child {
+                    margin-bottom: Size(5);
+                    span:first-child {
+                        font-size: FSize(48);
+                        color: #262626;
+                    }
+                    span:last-child {
+                        font-size: FSize(36);
+                        color: #6c6c6c;
+                        margin-left: Size(42);
+                        span{
+                        	margin-left: 0;
+                        	color: #262626;
+                        }
+                    }
+                }
+                &:last-child {
+                    font-size: FSize(36);
+                    line-height: FSize(46);
+                    color: #6c6c6c;
+                    @include PBlock(2);
+                    span {
+                        margin-right: Size(26);
+                        color: #262626;
+                        
+                    }
+                }
+            }
+        }
+        &:before,
+        &:after {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 12px;
+            background: #6c6c6c;
+            position: absolute;
+            top: 50%;
+            right: Size(25);
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        &:before {
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transform-origin: 100%;
+            -ms-transform-origin: 100%;
+            transform-origin: 100%;
+        }
+        &:after {
+            -webkit-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            -webkit-transform-origin: 100%;
+            -ms-transform-origin: 100%;
+            transform-origin: 100%;
+        }
+    }
+    .infoB {
+        padding: Size(25) Size(42) Size(45) ;
+
+        font-size: FSize(36);
+        line-height: FSize(48);
+        color: #6c6c6c;
+        p {
+            @include PBlock(2);
+            margin: 0;
+            color: #6c6c6c;
+            span {
+                margin-right: Size(26);
+                color: #262626;
+                
+            }
+        }
+    }
+}

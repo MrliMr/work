@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/askList.css" />
+		<script src="http://static.lawyermarketing.cn/js/fl580/m/zepto.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<nav>
+			<div>
+				<a class="active" href="">全部</a>
+				<a>离婚诉讼</a>
+				<a>离婚诉讼</a>
+				<a>离婚诉讼</a>
+				<a>离婚诉讼</a>
+				<a>离婚诉讼</a>
+				<a>离婚诉讼</a>
+				<a>离婚诉讼</a>
+			</div>
+		</nav>
+		<a class="articleCard" href="http://www.baidu.com">
+			<div class="articlePic">
+				<img src="imgs/askListDefaultImg.jpg" alt="" />
+			</div>
+			<div class="articleInfo">
+				<h4>婚姻律师谈离婚后的婚姻律师谈离婚后的婚姻律师谈离婚后的婚姻律师谈离婚后的</h4>
+				<p>婚姻律师谈离婚后的婚姻律师谈离婚后的婚姻律师谈离婚后的婚姻律师谈离婚后的离婚后的婚姻律师谈离婚后的婚姻律师谈离婚后的</p>
+
+			</div>
+		</a>
+		
+
+		<script type="text/javascript">
+			 //nav a状态调整
+			$("nav a").tap(function() {
+				$("nav a").removeClass("active");
+				$(this).addClass("active");
+			});
+			 //nav div宽度调整
+			var aWidth = [];
+			var aDom = $("nav a");
+			var aLength = aDom.length;
+			var total;
+			for (var i = 0; i < aLength; i++) {
+				aWidth.push(aDom.eq(i).width());
+			}
+			total = eval(aWidth.join("+"));
+			$("nav div").width(total +2+ "px");
+		</script>
+	</body>
+
+</html>

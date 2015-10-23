@@ -1,0 +1,43 @@
+@import "_baseFuc.scss";
+div {
+    width: 100%;
+    @include absoluteCenter();
+}
+
+p {
+    color: #262626;
+    font-size: FSize(42);
+    line-height: FSize(60);
+    margin-bottom: 0;
+    padding: 0 Size(50);
+    text-align: center;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.call {
+    font-size: FSize(42);
+    color: #fa2b2b;
+}
+
+.btn {
+    border-radius: 5px;
+    margin: 0 auto;
+    width: Size(668);
+    margin-top: Size(45);
+    line-height: Size(126);
+}
+
+.callNum {
+    color: #fff;
+    background-color: #fb4747;
+}
+
+.return {
+    color: #262626;
+    border: 1px solid #e2e2e2;
+}

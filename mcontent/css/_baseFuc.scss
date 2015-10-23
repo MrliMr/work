@@ -1,0 +1,31 @@
+@function Size($num) {
+    @return ($num/54)+rem;
+}
+
+@function FSize($num){
+    @return ($num/2.6)+px;
+}
+
+@mixin verticalCenter() {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+@mixin absoluteCenter() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+@mixin PBlock($num){
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+}
+
